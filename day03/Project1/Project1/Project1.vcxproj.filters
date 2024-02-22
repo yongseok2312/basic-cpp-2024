@@ -15,34 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="240222.SRO.cpp">
+    <ClCompile Include="240222.RefArrElem.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="240222.inline.cpp">
+    <ClCompile Include="240222.RefPtr.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="240222.inline2.cpp">
+    <ClCompile Include="240222.reference.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="240222.NameAlias.cpp">
+    <ClCompile Include="240222.RefReturn01.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="240222.Namesp1.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="240222.Namesp2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="240222.Namesp3.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="240222.usingdcl2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="240222.const.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="240222.point.cpp">
+    <ClCompile Include="240222.RefReturn02.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
