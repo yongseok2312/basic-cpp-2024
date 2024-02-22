@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 using namespace std;
 int Adder(int num1 = 1, int num2 = 2);	// 함수 선언
@@ -13,4 +14,7 @@ int Adder(int num1, int num2)	// 함수 정의
 {
 	return num1 + num2;
 }
+// 순서 대체로 선언 -> 메인 -> 정의
+
 // 클래스 안에 들어가는 함수 메서드라 부름 *****
+*/

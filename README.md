@@ -13,6 +13,12 @@ IoT  개발자 심화 프로그래밍 언어 학습리포지토리
 	- 오버로딩
 
 ## 3일차
+- C++기본
+	- Defalut
+	- Namespace
+	- inline
+	- const
+	- point
 
 ## 4일차
 
