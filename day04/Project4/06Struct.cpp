@@ -16,7 +16,7 @@ void showHuman(Human h)
 
 int main()
 {
-	int a = 10;
+	//int a = 10;
 	Human h1 = { "홍길동", 50, "의적" }; // human 타입의 변수를 선언하고 초기화를 시킨다
 	showHuman(h1);
 
