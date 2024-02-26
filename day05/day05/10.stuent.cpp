@@ -28,7 +28,7 @@ public:
 };
 
 int main() {
-	StudentClass sc1(2017013198,"이용석","고분자공학",27); //객체를 생성하면 생성자를 호출해야한다. 
+	StudentClass sc1(2017013198,"이용석","1231",27); //객체를 생성하면 생성자를 호출해야한다. 
 	sc1.Printstudent();
 	return 0; 
 }

@@ -5,7 +5,10 @@ class Fruitseller {
 private:
 	int Apple_price;
 	int numofApples;
-	int mymoneys;
+	int mymoneys; 
+
+	
+
 public:
 	void Initmembers(int price, int num, int money)
 	{
