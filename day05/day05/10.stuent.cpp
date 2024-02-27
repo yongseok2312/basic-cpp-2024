@@ -12,7 +12,7 @@ private:
 
 public:	
 	// 문자열은 주소이기때문에 포인터 변수에 넣어서 사용 - 문장열의 첫번째 문자 주소가 저장된다. 
-	StudentClass(int a, const char *uname, const char *m, int e) : ID(a) {
+	StudentClass(int a, const char *uname, const char *m, int e) : ID(a) { //strcp를 사용시 무조건 const char *
 		// int ID = a;  // : ID(a) 넣음으로써 주석처리 (ID(a) : 초기화- MemberInit)
 		// 멤버이니셜라이즈(Member Initializer)는 객체 생성시 초기화되지 않는 멤버들을 초기화할때 사용
 		// 즉, 객체 생성과 상관 없이 미리 초기화가 되는 멤버들에 초기화 

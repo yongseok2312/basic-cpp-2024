@@ -57,6 +57,12 @@
     <ClCompile Include="10.stuent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="추가1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="추가2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="1.h">
@@ -66,6 +72,9 @@
       <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="Recatnagle.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="추가.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
