@@ -1,0 +1,14 @@
+New Object: 000000919555F4C4	객체 ob주소
+New Copy obj: 000000919555F5C4	객체 ob주소
+Parm ADR: 000000919555F5C4	객체 ob주소
+New Copy obj: 000000919555F604	임시 객체 주소
+Destory obj: 000000919555F5C4	객체 ob소멸
+Destory obj: 000000919555F604	임시 객체 소멸
+
+New Copy obj: 000000919555F624	새로운  tempRef - ob 주소 생성
+Parm ADR: 000000919555F624	ob 객체 주소
+New Copy obj: 000000919555F4E4	임시 객체
+Destory obj: 000000919555F624	ob 객체 소멸
+Return obj000000919555F4E4		임시객체 반환
+Destory obj: 000000919555F4E4	임시객체 소멸
+Destory obj: 000000919555F4C4	ob 객체 소멸
