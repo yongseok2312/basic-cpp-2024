@@ -57,3 +57,13 @@ IoT  개발자 심화 프로그래밍 언어 학습리포지토리
 	- 임시 객체
 	- friend 선언
 	- static
+
+## 8일차
+- C++
+	- static 멤버변수(클래스 변수)
+		- const static
+	- mutable: const 함수에 대하여 예외를 둠
+	- string 문자열 사용시 strcpy를 사용하지 않고 사용가능
+	- 상속
+		- 상속 시 class (name) :public (name) 및 각 변수도 지정 단 확장 시 추가 해야함
+		- 부모의 private를 사용하기 위하여 public에 함수를 만들어 return 값을 통해 사용가능
