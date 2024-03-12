@@ -86,14 +86,14 @@ int main() {
 			int id = 0;
 			int price = 0;
 			int RAM = 0;
+		else if ( b == 2) {
+			string producer, model;
 		if (b == 1) {
 			string  producer, ISBN, author, title;
 			cout << "책 정보를 적으세요 -> id, price,producer, ISBN, author, title" << endl;
 			cin >> id >> price >> producer >> ISBN >> author >> title;
 			product[i] = new Book(id, price, producer, ISBN, author, title);
 		}
-		else if ( b == 2) {
-			string producer, model;
 			cout << "핸드폰 정보를 적으세요-> id,price,producer,model,RAM" << endl;
 			cin >> id >> price >> producer >> model >> RAM;
 			product[i] = new HandPhone(id, price, producer, model, RAM);
