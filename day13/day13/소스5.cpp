@@ -1,26 +1,6 @@
-/*
-Parent class
-class Product : id, price, producer
-Child class
-class Book : ISBN, author, title
-class HandPhone:model, RAM
-class Computer: model, cpu, RAM
-객체 포인터 배열 사용: product [100]
-string 사용가능
-파일 분할
-
-메인 
----상품관리 시스템---
-1 상품 추가 2 상품 출력 3 상품 검색 0 종료
->
-
-1또는 2또는 3을 선택한 경우
-1 책 2 핸드폰 3 컴퓨터
-선택 목록을 띄워 해당 상품을 선택한 후에 추가, 출력, 또는 검색 실행된다.
-*/
-
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Product {
@@ -32,20 +12,16 @@ private:
 public:
     Product(int id, int price, string producer) : id(id), price(price), producer(producer) {}
     virtual ~Product() {}
-
     int getId() const {
         return id;
     }
-
     int getPrice() const {
         return price;
     }
-
     string getProducer() const {
         return producer;
     }
-
-    virtual void printInfo() const = 0; // 순수 가상 함수
+    virtual void printInfo() const = 0; // 가상 함수로 변경
 };
 
 class Book : public Product {
@@ -57,7 +33,6 @@ private:
 public:
     Book(int id, int price, string producer, string ISBN, string author, string title)
         : Product(id, price, producer), ISBN(ISBN), author(author), title(title) {}
-
     void printInfo() const override {
         cout << "ID: " << getId() << endl;
         cout << "가격: " << getPrice() << endl;
@@ -74,14 +49,12 @@ private:
     int RAM;
 
 public:
-    HandPhone(int id, int price, string producer, string model, int RAM)
-        : Product(id, price, producer), model(model), RAM(RAM) {}
-
+    HandPhone(int id, int price, string producer, string model, int RAM) : Product(id, price, producer), model(model), RAM(RAM) {}
     void printInfo() const override {
         cout << "ID: " << getId() << endl;
         cout << "가격: " << getPrice() << endl;
         cout << "생산자: " << getProducer() << endl;
-        cout << "Model: " << model << endl;
+        cout << "모델: " << model << endl;
         cout << "RAM: " << RAM << "GB" << endl;
     }
 };
@@ -93,38 +66,56 @@ private:
     int RAM;
 
 public:
-    Computer(int id, int price, string producer, string model, string cpu, int RAM)
-        : Product(id, price, producer), model(model), cpu(cpu), RAM(RAM) {}
-
+    Computer(int id, int price, string producer, string model, string cpu, int RAM) : Product(id, price, producer), model(model), cpu(cpu), RAM(RAM) {}
     void printInfo() const override {
         cout << "ID: " << getId() << endl;
         cout << "가격: " << getPrice() << endl;
         cout << "생산자: " << getProducer() << endl;
-        cout << "Model: " << model << endl;
+        cout << "모델: " << model << endl;
         cout << "CPU: " << cpu << endl;
         cout << "RAM: " << RAM << "GB" << endl;
     }
 };
 
-// 제품 출력 함수
-void printProductsByType(Product* products[], int numProducts, int type) {
-    cout << "Printing products:" << endl;
-    for (int i = 0; i < numProducts; ++i) {
-        if ((type == 1 && dynamic_cast<Book*>(products[i])) ||
-            (type == 2 && dynamic_cast<HandPhone*>(products[i])) ||
-            (type == 3 && dynamic_cast<Computer*>(products[i]))) {
-            cout << "Product " << i + 1 << ":" << endl;
-            products[i]->printInfo();
-            cout << endl;
+class ProductManager {
+private:
+    vector<Product*> products;
+
+public:
+    ~ProductManager() {
+        for (Product* p : products) {
+            delete p;
         }
     }
-}
+
+    void addProduct(Product* product) {
+        products.push_back(product);
+    }
+
+    void printProductsByType(int type) const {
+        cout << "제품을 출력합니다:" << endl;
+        for (Product* p : products) {
+            if ((type == 1 && dynamic_cast<Book*>(p)) ||
+                (type == 2 && dynamic_cast<HandPhone*>(p)) ||
+                (type == 3 && dynamic_cast<Computer*>(p))) {
+                p->printInfo();
+                cout << endl;
+            }
+        }
+    }
+
+    Product* findProductById(int id) const {
+        for (Product* p : products) {
+            if (p->getId() == id) {
+                return p;
+            }
+        }
+        return nullptr;
+    }
+};
 
 int main() {
-    const int MAX_PRODUCTS = 100;
-    Product* products[MAX_PRODUCTS]; // 객체 포인터 배열
-
-    int numProducts = 0;
+    ProductManager productManager;
     int choice;
 
     while (true) {
@@ -138,7 +129,6 @@ int main() {
             int type;
             cout << "추가할 상품의 종류를 선택하세요:\n1. 책\n2. 핸드폰\n3. 컴퓨터\n";
             cin >> type;
-
             int id, price, RAM;
             string producer, ISBN, author, title, model, cpu;
 
@@ -158,14 +148,14 @@ int main() {
                 cin >> author;
                 cout << "제목: ";
                 cin >> title;
-                products[numProducts++] = new Book(id, price, producer, ISBN, author, title);
+                productManager.addProduct(new Book(id, price, producer, ISBN, author, title));
                 break;
             case 2:
                 cout << "모델: ";
                 cin >> model;
                 cout << "RAM (GB): ";
                 cin >> RAM;
-                products[numProducts++] = new HandPhone(id, price, producer, model, RAM);
+                productManager.addProduct(new HandPhone(id, price, producer, model, RAM));
                 break;
             case 3:
                 cout << "모델: ";
@@ -174,7 +164,7 @@ int main() {
                 cin >> cpu;
                 cout << "RAM (GB): ";
                 cin >> RAM;
-                products[numProducts++] = new Computer(id, price, producer, model, cpu, RAM);
+                productManager.addProduct(new Computer(id, price, producer, model, cpu, RAM));
                 break;
             default:
                 cout << "잘못된 유형 선택!" << endl;
@@ -182,44 +172,14 @@ int main() {
             }
             cout << "상품이 추가되었습니다." << endl;
             break;
-        }
-        case 2: {
-            int type;
-            cout << "출력할 상품의 종류를 선택하세요:\n1. 책\n2. 핸드폰\n3. 컴퓨터\n";
-            cin >> type;
-            printProductsByType(products, numProducts, type);
-            break;
-        }
-        case 3: {
-            int searchId;
-            cout << "검색할 상품의 ID를 입력하세요: ";
-            cin >> searchId;
-            bool found = false;
-            for (int i = 0; i < numProducts; ++i) {
-                if (products[i]->getId() == searchId) {
-                    found = true;
-                    cout << "상품을 찾았습니다:" << endl;
-                    products[i]->printInfo();
-                    break;
-                }
             }
-            if (!found) {
-                cout << "상품을 찾을 수 없습니다!" << endl;
-            }
-            break;
-        }
-        case 0:
-            // 할당된 메모리 해제
-            for (int i = 0; i < numProducts; ++i) {
-                delete products[i];
-            }
-            cout << "프로그램을 종료합니다." << endl;
-            return 0;
-        default:
-            cout << "잘못된 선택입니다. 다시 시도하세요." << endl;
+            case 0:
+                cout << "프로그램을 종료합니다." << endl;
+                return 0;
+            default:
+                cout << "잘못된 선택!" << endl;
             break;
         }
     }
-
     return 0;
 }

@@ -1,24 +1,3 @@
-/*
-Parent class
-class Product : id, price, producer
-Child class
-class Book : ISBN, author, title
-class HandPhone:model, RAM
-class Computer: model, cpu, RAM
-객체 포인터 배열 사용: product [100]
-string 사용가능
-파일 분할
-
-메인 
----상품관리 시스템---
-1 상품 추가 2 상품 출력 3 상품 검색 0 종료
->
-
-1또는 2또는 3을 선택한 경우
-1 책 2 핸드폰 3 컴퓨터
-선택 목록을 띄워 해당 상품을 선택한 후에 추가, 출력, 또는 검색 실행된다.
-*/
-
 #include <iostream>
 #include <string>
 using namespace std;
